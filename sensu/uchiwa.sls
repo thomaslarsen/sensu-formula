@@ -2,7 +2,7 @@
 {% macro get(value, item) -%}
   {{ value.get(item, sensu.sites.get(item)) }}
 {%- endmacro -%}
-{%- set sites = salt['pillar.get']('sensu:uchiwa:sites').items() %}
+{%- set sites = sensu.sites.items() %}
 
 include:
   - sensu
@@ -28,7 +28,6 @@ uchiwa:
             port: {{ get(value, 'port') }}
             user: {{ get(value, 'user') }}
             pass: {{ get(value, 'password') }}
-            path: {{ get(value, 'path') }}
             timeout: {{ get(value, 'timeout') }}
         {%- endfor %}
         uchiwa:

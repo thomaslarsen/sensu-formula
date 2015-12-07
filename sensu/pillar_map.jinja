@@ -17,34 +17,35 @@
             'host': 'localhost',
             'port': 4567,
             'user': 'admin',
-            'password': ''
+            'password': 'secret'
         },
         'rabbitmq': {
-            'host': 'localhost',
+            'host': 'monitor',
             'port': 5672,
             'vhost': '/sensu',
             'user': 'sensu',
-            'password': ''
+            'password': 'secret'
         },
         'ssl': {
             'enable': False
         },
         'uchiwa': {
-            'user': '',
-            'password': '',
+            'user': 'admin',
+            'password': 'admin',
             'port': 3000,
             'stats': 10,
-            'refresh': 10000
+            'refresh': 5
         },
-        'sites': {
-            'name': 'Sensu',
-            'host': '127.0.0.1',
-            'ssl': False,
-            'port': 4567,
-            'user': 'admin',
-            'password': '',
-            'path': '',
-            'timeout': 5000
+        'sites':{ 
+             'Site 1': {
+                'name': 'Sensu',
+                'host': 'localhost',
+                'ssl': False,
+                'port': 4567,
+                'user': 'admin',
+                'password': 'secret',
+                'timeout': 5000
+            }
         }
     },
 }, merge=salt['pillar.get']('sensu'), default='default') %}
